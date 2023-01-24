@@ -99,3 +99,28 @@ using interface gives us better `Test doubles` -also we can use mocking framewor
 - Temporal coupling Call 1 must precede call 2 or otherwise execution will not be correct
 - constrain on execution order is also a good idea regarding to our case
   
+## Abstract data types
+
+- ADTs can be interfaces
+- Rules of of the ADT can be represent as logical implications
+- We cant test whether a concrete type satisfies rules of its ADT
+- ADT Must always be true
+- Tests that ASsert behavior are easier to maintain
+- Assert Against ADT give us Highest standard behavior'
+- `class invariant` is condition must be true all time. ex: count of list with no member is zero
+- Avoid loops in unit tests in general
+- Tests which satisfy ADTs its working for all the implementations of those ADTs
+- ABS not covering non-functional requirements and we will need tests which will covering implementation not contract
+- `Black box testing` writing unit tests against a public interface (ADT) -> easier to maintain
+- `White box testing` writing unit tests against concrete class (Branch coverage technique)
+- Failing test can tell us we are missing a requirement
+- Writing tests which throws exception is good when about your constrains for example outOfRangeException or in general the situation that or sut can not handle
+- when we have a guard cause that means if satisfied that case our method is undefined
+
+## Test Against Interface
+
+- we have to be carefully with inheritance drive from abstract class is more flexibility in testing
+- ![Alternate text](../Abstraction.png)
+- ADT & LSP are best friends
+
+## TDD
