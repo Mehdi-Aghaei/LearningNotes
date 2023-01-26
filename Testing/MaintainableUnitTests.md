@@ -106,11 +106,11 @@ using interface gives us better `Test doubles` -also we can use mocking framewor
 - We cant test whether a concrete type satisfies rules of its ADT
 - ADT Must always be true
 - Tests that ASsert behavior are easier to maintain
-- Assert Against ADT give us Highest standard behavior'
+- Assert Against ADT give us Highest standard behavior
 - `class invariant` is condition must be true all time. ex: count of list with no member is zero
 - Avoid loops in unit tests in general
 - Tests which satisfy ADTs its working for all the implementations of those ADTs
-- ABS not covering non-functional requirements and we will need tests which will covering implementation not contract
+- ADTs not covering non-functional requirements and we will need tests which will covering implementation not contract
 - `Black box testing` writing unit tests against a public interface (ADT) -> easier to maintain
 - `White box testing` writing unit tests against concrete class (Branch coverage technique)
 - Failing test can tell us we are missing a requirement
@@ -124,3 +124,39 @@ using interface gives us better `Test doubles` -also we can use mocking framewor
 - ADT & LSP are best friends
 
 ## TDD
+
+Good inheritance testing choices are generic classes and interfaces, cover unit tests which they are missing before adding the feature. Point of interfaces is to capture universal data types.
+the idea is write a good failing test and with minimal implantation make that pass.
+if you have some finding in your code first try to write a unit test for that.
+
+### Idea
+
+- we should be able to refactor the code covered by the test but its possible only we cover the behavior and implantation tests may fail.
+- We some class are affecting behavior of the other class by testing the affected class we covered that class as well.
+- ![Testing Interface](../InterfacesTest.png)
+- Tests don't deal with implementations
+
+## Testing Design Patterns
+
+- We have to consider separation of concern
+- We can treat value types as simple value
+- Top-Down Coding Style
+  1. Start by designing the calls from the consuming end as you wish them to be.
+  2. Then provide detailed implementation to satisfy the desired interface.
+- To check equality in data types its good to override Equals and GetHash code this way two equal object should return same hashCode we can also override equality sign and != which check equality by reference and important is to implement Iequitable to avoid casting
+- ![equality Rules](../EqualityRules.png)
+- Some times we need our in house libraries to unit test some requirements
+
+## Design by contracts
+
+- Always caller validate the condition
+- ![exceptions](../Exceptions.png)
+- It's good to design by contract and have some preconditions
+- when we sure about state of our object there is nothing to worry about
+- Liskov law is a life saver and violating that going to problematic
+- ![Hint](../Golden.png)
+- Preconditions must be satisfy before method executions begins
+- Contracts are runtime unit tests 😊Proper preconditions and post conditions will save us for writing unit tests because those test already covered by conditions
+- ![Post&Pre](../PostAndPre.png)
+- ![Int](../Int.png)
+- Contracts are good for debug code not production code we can make contract classes by debug attribute which make them just build in debug
